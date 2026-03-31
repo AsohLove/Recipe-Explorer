@@ -5,6 +5,10 @@ export async function fetchMeal(meal: string) {
         throw new Error('Failed to fetch meal')
     }
 
-    return res.json();
+    // return res.json();
+    const data = await res.json();
+    console.log(data.meals)
+
+    return data;
     
 }
