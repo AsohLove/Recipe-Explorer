@@ -1,25 +1,72 @@
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
+import { Heart } from "lucide-react"
+import { Link } from "react-router-dom"
+import type { MealTypes } from "../types/MealTypes"
+import { useState } from "react"
+import { isFavorite, toggleFavorite } from "../utils/favorites"
 
 type Props = {
-    recipe: any;
+  meal: MealTypes;
 }
 
-export default function RecipeCard({ recipe }): Props {
-    return (
-        <Link to={`/recipe/${recipe.idMeal}`}>
-            <div className="bg-white rounded-lg shadow hover:scale-106 transition">
-                <img 
-                src={recipe.strMealThumb} 
-                alt={recipe.strMeal}
-                className="rounded-t-lg"
-                />
+export default function RecipeCard({ meal }: Props) {
+  const [favorite, setFavorite ] = useState(isFavorite(meal.idMeal));
 
-                <div>
-                    <h3 className="font-semibold">{recipe.strMeal}</h3>
-                    <p className="text-sm text-gray-500">{recipe.strCategory}</p>
-                </div>
-            </div>
-        </Link>
-        
-    )
+  const handleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault();
+    toggleFavorite(meal.idMeal);
+    setFavorite(!favorite);
+  }
+
+  return (
+
+    <Link to={`/recipe/${meal.idMeal}`}>
+
+      <motion.div
+        whileHover={{ y: -6 }}
+        // whileTap={{ scale: 0.96 }}
+        // initial={{ opacity: 0, y: 20 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{ duration: 0.35 }}
+        className="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer"
+      >
+
+        <div className="relative">
+
+          <img
+            src={meal.strMealThumb}
+            className="w-full h-56 object-cover"
+          />
+
+          <button onClick={handleFavorite}
+          className="absolute top-3 right-3 bg-white p-2 rounded-full shadow cursor-pointer">
+            <Heart 
+              size={18} 
+              className={favorite ? "fill-red-500 text-red-500" : ""}
+            />
+          </button>
+
+        </div>
+
+        <div className="p-4">
+
+          <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">
+            HEALTHY
+          </span>
+
+          <h3 className="font-semibold mt-2">
+            {meal.strMeal}
+          </h3>
+
+          <p className="text-xs text-gray-400 mt-2">
+            Chef Elena Rossi
+          </p>
+
+        </div>
+
+      </motion.div>
+
+    </Link>
+
+  )
 }
