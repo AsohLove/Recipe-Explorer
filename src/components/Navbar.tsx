@@ -1,17 +1,32 @@
 import { NavLink } from "react-router-dom";
 import { ChefHat, CircleUserRound, Heart, Search } from "lucide-react";
+import { useState } from "react";
 
 type Props = {
-  searchQuery: string;
-  setSearchQuery: (query: string) => void
-}
+  search: string;
+  setSearch: (search: string) => void;
+};
 
-export default function Navbar({ searchQuery, setSearchQuery}: Props) {
+export default function Navbar({ setSearch }: Props) {
+
+const [input , setInput] = useState<string>("");
+
+  const handleSearch = () => {
+    setSearch(input);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
     <header className="bg-white shadow p-4 flex items-center justify-between">
-      
-      <h2 className="text-xl font-bold"><ChefHat size={28} /> Saffron & Sage</h2>
+      <h2 className="flex items-center gap-2 text-xl font-bold">
+        <ChefHat size={28} />
+        Saffron & Sage
+      </h2>
 
       <nav className="flex gap-4">
         <NavLink
@@ -20,7 +35,6 @@ export default function Navbar({ searchQuery, setSearchQuery}: Props) {
             isActive ? "text-orange-500 font-bold underline" : "text-gray-700"
           }
         >
-          
           Home
         </NavLink>
         <NavLink
@@ -29,7 +43,6 @@ export default function Navbar({ searchQuery, setSearchQuery}: Props) {
             isActive ? "text-orange-500 font-bold underline" : "text-gray-700"
           }
         >
-          
           Favorites
         </NavLink>
       </nav>
@@ -38,12 +51,18 @@ export default function Navbar({ searchQuery, setSearchQuery}: Props) {
         <Search size={18} />
         <input
           type="text"
-          value={searchQuery}
+          value={input}
           placeholder="Search recipes..."
           className="outline-none"
-          onChange={(e) => setSearchQuery(e.target.value)}
-          
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
+        <button
+          onClick={handleSearch}
+          className="text-sm bg-orange-500 text-white px-3 py-1 rounded cursor-pointer"
+        >
+          Search
+        </button>
         <Heart className="w-6 h-6 text-black cursor-pointer" />
         <CircleUserRound className="w-6 h-6 cursor-pointer" />
       </div>

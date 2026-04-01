@@ -19,7 +19,7 @@ export default function CategoryFilter({ active, setCategory }: Props) {
       <div className="flex justify-between mb-6">
         <h2 className="font-semibold">Categories</h2>
 
-        <button className="text-sm text-gray-500 cursor-pointer">View All</button>
+        <button className="text-sm text-gray-500 cursor-pointer" onClick={() => setCategory('All')}>View All</button>
       </div>
 
       <div className="flex gap-3 mt-3 flex-wrap">

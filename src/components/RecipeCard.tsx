@@ -35,6 +35,7 @@ export default function RecipeCard({ meal }: Props) {
 
           <img
             src={meal.strMealThumb}
+            alt={meal.strMeal}
             className="w-full h-56 object-cover"
           />
 
@@ -51,16 +52,16 @@ export default function RecipeCard({ meal }: Props) {
         <div className="p-4">
 
           <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">
-            HEALTHY
+            {meal.strCategory || "Unknown"}
           </span>
 
           <h3 className="font-semibold mt-2">
             {meal.strMeal}
           </h3>
 
-          <p className="text-xs text-gray-400 mt-2">
-            Chef Elena Rossi
-          </p>
+          {meal.strArea && (<p className="text-lg text-gray-400 mt-2 flex justify-end italic">
+            {meal.strArea}
+          </p>)}
 
         </div>
 
