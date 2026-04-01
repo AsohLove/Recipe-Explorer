@@ -1,4 +1,4 @@
-### :pizza: RECIPE EXPLORER
+# :pizza: RECIPE EXPLORER
 
 ## :beginner: Project Overview
 
@@ -32,7 +32,7 @@ It features curated collections, category filters, and a dynamic search function
 
 1. Clone the repository:
 
-- git clone git@github.com:AsohLove/Recipe-Explorer.git
+- git clone [project repo](https://github.com/AsohLove/Recipe-Explorer.git)
 - cd recipe-explorer
 
 2. Install project dependencies
@@ -45,7 +45,7 @@ OR
 OR
 - yarn dev
 
-4. Open your browser at http://localhost:5173
+4. Open your browser at [localhost](http://localhost:5173)
 
 :star: **Tech Stack**
 - React – UI library

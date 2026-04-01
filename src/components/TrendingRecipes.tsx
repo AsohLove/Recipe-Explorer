@@ -5,7 +5,6 @@ type Props = {
   meals?: MealTypes[];
 }
 
-
 export default function TrendingRecipes({ meals }: Props){
     return (
         <section className="mt-10">
