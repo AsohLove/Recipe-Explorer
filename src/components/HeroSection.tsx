@@ -36,7 +36,7 @@ export default function HeroSection({ setSearch }: Props) {
 
         <UtensilsCrossed
           className="absolute left-1 -translate-y-1/2 text-gray-500"
-          size={40}
+          size={30}
         />
 
         <input

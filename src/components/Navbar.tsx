@@ -40,7 +40,7 @@ const [input , setInput] = useState<string>("");
         <NavLink
           to="/favorites"
           className={({ isActive }) =>
-            isActive ? "text-orange-500 font-bold underline" : "text-gray-700"
+            isActive ? "text-orange-500 font-bold underline" : "text-gray-700 "
           }
         >
           Favorites

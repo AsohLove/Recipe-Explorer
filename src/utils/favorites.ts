@@ -8,13 +8,11 @@ export function getFavorites(): string[] {
 export function toggleFavorite(id: string) {
   const favorites = getFavorites();
 
-  if (favorites.includes(id)) {
-    const updated = favorites.filter((fav) => fav !== id);
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(updated));
-  } else {
-    favorites.push(id);
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
-  }
+  const updated = favorites.includes(id)
+    ? favorites.filter((fav) => fav !== id)
+    : [...favorites, id];
+
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(updated));
 }
 
 export function isFavorite(id: string) {

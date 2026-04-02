@@ -62,7 +62,7 @@ export default function RecipeCard({ meal }: Props) {
           {meal.strArea && (<p className="text-lg text-gray-400 mt-2 flex justify-end italic">
             {meal.strArea}
           </p>)}
-
+          
         </div>
 
       </motion.div>

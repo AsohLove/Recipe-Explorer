@@ -14,8 +14,8 @@ It features curated collections, category filters, and a dynamic search function
 - Responsive design for mobile and desktop
 - Curated collections and trending recipes
 
-# Preview
-- Favourite Page
+## Preview
+- Favorite Page
 ![Favorite page](/public/FavoritePage.png)
 
 - Recipe Details Page

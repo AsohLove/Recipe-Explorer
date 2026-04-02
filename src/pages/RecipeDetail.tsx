@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 
 import { fetchMealById } from "../services/api"
 import type { MealTypes } from "../types/MealTypes"
+import Loader from "../components/Loader"
 
 export default function RecipeDetail() {
 
@@ -15,7 +16,8 @@ export default function RecipeDetail() {
     queryFn: () => fetchMealById(id!)
   })
 
-  if (!data) return <p>Loading...</p>
+  if (!data) return <Loader />
+ 
 
   const ingredients: string[] = []
 
@@ -45,7 +47,7 @@ export default function RecipeDetail() {
 
       <img
         src={data.strMealThumb}
-        className="rounded-xl mb-6"
+        className="rounded-xl mb-6 h-100"
       />
 
       <h1 className="text-3xl font-bold mb-4">
