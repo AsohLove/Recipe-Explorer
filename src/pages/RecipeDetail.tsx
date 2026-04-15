@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { fetchMealById } from "../services/api";
 import type { MealTypes } from "../types/MealTypes";
 import Loader from "../components/Loader";
+import { Globe } from "lucide-react";
 
 export default function RecipeDetail() {
   const { id } = useParams();
@@ -64,6 +65,7 @@ export default function RecipeDetail() {
               </span>
             </div>
             <h1 className="text-xl font-bold">{data?.strMeal}</h1>
+           <h2 className="flex gap-2 text-sm"><Globe />{data?.strArea}</h2>
             <p className="text-sm text-gray-500 mt-2">
               {data?.strInstructions?.slice(0, 120) + "..."}
             </p>
@@ -118,7 +120,15 @@ export default function RecipeDetail() {
                 </div>
               </div>
             ))}
+            <div className="flex justify-between bg-amber-400 rounded-full p-4">
+          <div>
+            <h3 className="text-white font-bold">Ready to start?</h3>
+            <p className="text-gray-600 text-sm">Switch to Cooking Mode for hands-free voice guidance.</p>
+          </div>
+          <button className=" bg-white rounded-full w-30 font-semibold text-center text-amber-600 text-sm cursor-pointer">Start cooking</button>
         </div>
+        </div>
+        
       </div>
     </motion.div>
   );

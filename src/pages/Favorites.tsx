@@ -25,7 +25,8 @@ export default function Favorites() {
   }, []);
 
   if (!meals.length) {
-    return <p>No favorite recipes yet</p>;
+    return <p>No favorite recipes yet, <br />
+     click on the Heart icon on a recipe card to add it as favorite</p>;
   }
 
   return (
