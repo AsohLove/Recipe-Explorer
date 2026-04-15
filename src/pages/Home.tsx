@@ -59,7 +59,8 @@ export default function Home() {
             delivered weekly.
           </p>
           <div>
-            <input type="email" placeholder="email@address.com" className="outline-none bg-white  rounded-3xl p-3 border mt-2 mr-2 "/>
+            <input type="email" placeholder="email@address.com" className="outline-none bg-white  rounded-3xl p-3 mr-3 mt-3  "/>
+
             <button className="bg-black font-semibold p-3 text-sm text-white rounded-4xl cursor-pointer">Sign Me Up</button>
           </div>
         </div>
