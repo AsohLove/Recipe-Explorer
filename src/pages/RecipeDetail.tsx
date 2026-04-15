@@ -1,3 +1,4 @@
+
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
@@ -11,12 +12,15 @@ export default function RecipeDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data } = useQuery<MealTypes>({
+  const { data, isLoading, isError, error } = useQuery<MealTypes>({
     queryKey: ["recipe", id],
-    queryFn: () => fetchMealById(id!),
+    queryFn: () => fetchMealById(id as string),
+    enabled: !!id,
   });
 
-  if (!data) return <Loader />;
+  if (isLoading) return <Loader />
+  if (isError) return <p>Error: {(error as Error).message}</p>
+  if (!data) return <p>No recipe found</p>;
 
   const ingredients: string[] = [];
 
