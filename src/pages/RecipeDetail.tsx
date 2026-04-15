@@ -80,7 +80,7 @@ export default function RecipeDetail() {
               </div>
 
               <div>
-                <p className="font-bold text-lg">34g</p>
+                <p className="font-bold text-lg">36g</p>
                 <p className="text-xs text-gray-500">Protein</p>
               </div>
 
