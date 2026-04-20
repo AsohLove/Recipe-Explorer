@@ -35,8 +35,8 @@ export default function HeroSection({ setSearch }: Props) {
       <div className="relative mt-6 flex items-center bg-gray-100 rounded-full p-2 max-w-xl">
 
         <UtensilsCrossed
-          className="absolute left-1 -translate-y-1/2 text-gray-500"
-          size={30}
+          className="absolute fill-amber-500 left-3 top-1/2 -translate-y-1/2 text-amber-500"
+          size={24}
         />
 
         <input
@@ -45,7 +45,7 @@ export default function HeroSection({ setSearch }: Props) {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Find ingredients, cuisines, or chefs..."
-          className="bg-transparent flex-1 px-3 outline-none"
+          className="bg-transparent flex-1 pl-10 pr-3 outline-none"
         />
         
         <button 
