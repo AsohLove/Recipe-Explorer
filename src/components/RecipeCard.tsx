@@ -24,10 +24,6 @@ export default function RecipeCard({ meal }: Props) {
 
       <motion.div
         whileHover={{ y: -6 }}
-        // whileTap={{ scale: 0.96 }}
-        // initial={{ opacity: 0, y: 20 }}
-        // animate={{ opacity: 1, y: 0 }}
-        // transition={{ duration: 0.35 }}
         className="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer"
       >
 

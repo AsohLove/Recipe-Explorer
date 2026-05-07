@@ -14,7 +14,7 @@ export default function TrendingRecipes({ meals }: Props){
             </p>
             <p className="text-gray-600 font-semibold">Found {meals?.length ?? 0} recipes </p>
             <div
-            className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+            className="grid gap-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-3"
             >
                 {meals?.map((meal) => (
                     <RecipeCard key={meal.idMeal} meal={meal}/>

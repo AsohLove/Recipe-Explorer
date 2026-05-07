@@ -21,7 +21,7 @@ export default function Navbar({ setSearch }: Props) {
   };
 
   return (
-    <header className="bg-white  px-8 py-4 flex items-center justify-between">
+    <header className="bg-white  px-8 py-4 flex flex-col items-center justify-between md:flex-row">
       <div className="flex items-center gap-10">
         <h2 className="flex items-center gap-2 text-2xl font-bold text-gray-900">
           <ChefHat size={32} className="text-gray-800" />
@@ -64,7 +64,7 @@ export default function Navbar({ setSearch }: Props) {
             onKeyDown={handleKeyDown}
           />
         </div>
-        <div className="flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6">
           <Link to="/favorites">
             <Heart
               size={24}

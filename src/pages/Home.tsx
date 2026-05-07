@@ -25,7 +25,7 @@ export default function Home() {
 
   //   const [debounceSearch] = useDebounce(search, 500);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: ["recipe", heroSearch || navbarSearch, category],
     queryFn: () => {
       const query = heroSearch || navbarSearch;
@@ -36,9 +36,11 @@ export default function Home() {
 
       return fetchMealsByCategory(category);
     },
+
+    // placeholderData: (previousData) => previousData,
   });
 
-  if (isLoading) return <Loader />;
+  // if (isLoading) return <Loader />;
 
   return (
     <div>
@@ -46,7 +48,18 @@ export default function Home() {
       <CategoryFilter active={category} setCategory={setCategory} />
       {/* <App /> */}
 
-      <TrendingRecipes meals={data || []} />
+      {isLoading ? (
+        <Loader /> ) : (
+          <>
+            {isFetching && (
+              <p className="text-sm text-gray-500">
+                Updating recipes...
+              </p>
+            )}
+            <TrendingRecipes meals={data || []} />
+          </>
+        )
+      }
 
       <div className="mt-4 max-w-7xl mx-auto flex items-center justify-center rounded-[1.75rem] border border-stone-800/10 bg-white/50 p-6 shadow-sm">
         <div>
