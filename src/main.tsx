@@ -19,10 +19,10 @@ createRoot(document.getElementById('root')!).render(
 
           <Route element={<DashboardLayout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/recipe/:id" element={<RecipeDetail />}/>
             <Route path="/favorites" element={<FavoriteMeals />} />
           </Route>
           
+            <Route path="/recipe/:id" element={<RecipeDetail />}/>
       </Routes>
     </QueryClientProvider>
     </BrowserRouter>

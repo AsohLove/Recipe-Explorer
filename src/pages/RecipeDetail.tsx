@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { fetchMealById } from "../services/api";
 import type { MealTypes } from "../types/MealTypes";
 import Loader from "../components/Loader";
-import { Globe } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export default function RecipeDetail() {
   const { id } = useParams();
@@ -38,8 +38,9 @@ export default function RecipeDetail() {
       initial={{ opacity: 0, scale: 0.96 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
-      className="max-w-4xl px-4 mx-auto"
+      className="max-w-4xl px-4 mt-5 mx-auto"
     >
+      <div className="flex justify-between"> 
       <button
         onClick={() => navigate(-1)}
         className="mb-6 text-sm text-gray-500 cursor-pointer"
@@ -47,6 +48,10 @@ export default function RecipeDetail() {
         ← Back
       </button>
 
+      <button>
+          <Heart size={18} fill="red"/>
+      </button>
+      </div>
 
       <div className="relative w-full h-[420px] md:h-[500px] rounded-2xl shadow-md">
         <img
@@ -69,24 +74,24 @@ export default function RecipeDetail() {
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl font-black tracking-tight">{data?.strMeal}</h1>
-           <h2 className="flex gap-2 text-sm"><Globe />{data?.strArea}</h2>
+           {/* <h2 className="flex gap-2 text-sm"><Globe />{data?.strArea}</h2> */}
             <p className="text-sm text-gray-500 mt-2">
               {data?.strInstructions?.slice(0, 120) + "..."}
             </p>
-            <div className="mt-4 grid grid-cols-3 text-center">
+            <div className="mt-4 flex gap-5 text-center">
               <div>
-                <p className="font-bold text-lg">420</p>
                 <p className="text-xs text-gray-500">Calories</p>
+                <p className="font-bold text-lg">420</p>
               </div>
 
               <div>
-                <p className="font-bold text-lg">36g</p>
                 <p className="text-xs text-gray-500">Protein</p>
+                <p className="font-bold text-lg">36g</p>
               </div>
 
               <div>
-                <p className="font-bold text-lg">12g</p>
                 <p className="text-xs text-gray-500">Carbs</p>
+                <p className="font-bold text-lg">12g</p>
               </div>
             </div>
           </div>
