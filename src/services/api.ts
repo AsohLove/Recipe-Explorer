@@ -16,19 +16,6 @@ export async function fetchMeal(meal: string): Promise<MealTypes[]> {
   return data.meals ?? []
 }
 
-
-
-export async function fetchMealsByLetter(letter: string): Promise<MealTypes[]> {
-  const res = await fetch(`${BASE_URL}/search.php?f=${letter}`)
-
-  if (!res.ok) throw new Error("Failed to fetch meals")
-
-  const data = await res.json()
-
-  return data.meals ?? []
-}
-
-
 export async function fetchMealById(id: string): Promise<MealTypes> {
   const res = await fetch(`${BASE_URL}/lookup.php?i=${id}`)
 

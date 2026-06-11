@@ -24,7 +24,7 @@ export default function DashboardLayout() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <Outlet context={{ search }} />
+        <Outlet context={{ search, setSearch }} />
       </motion.main>
       <footer className="bg-gray-200 p-4 text-center">
         &copy; 2026 Recipe Explorer

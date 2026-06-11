@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { fetchMealById } from "../services/api";
 import type { MealTypes } from "../types/MealTypes";
 import Loader from "../components/Loader";
-import { Globe } from "lucide-react";
 
 export default function RecipeDetail() {
   const { id } = useParams();
@@ -38,7 +37,7 @@ export default function RecipeDetail() {
       initial={{ opacity: 0, scale: 0.96 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
-      className="max-w-4xl px-4 mx-auto"
+      className="max-w-4xl px-4 mt-5 mx-auto"
     >
       <button
         onClick={() => navigate(-1)}
@@ -47,46 +46,45 @@ export default function RecipeDetail() {
         ← Back
       </button>
 
-
-      <div className="relative w-full h-[320px] rounded-2xl shadow-md">
+      <div className="relative w-full h-[420px] md:h-[500px] rounded-2xl shadow-md">
         <img
           src={data?.strMealThumb}
           alt={data?.strMeal}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-white/70 via-transparent to-transparent" />
         <div className="absolute left-1/2 bottom-[-50px] md:bottom-[-60px] -translate-x-1/2 w-[90%] max-w-2xl">
-          <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
             <div className="flex gap-2 mb-3">
-              <span className="text-xs px-2 py-1 rounded-full bg-green-100">
+              <span className="text-xs px-2 py-1 rounded-full bg-green-200 text-green-800">
                 Healthy
               </span>
-              <span className="text-xs px-2 py-1 rounded-full bg-yellow-100">
+              <span className="text-xs px-2 py-1 rounded-full bg-yellow-300 text-yellow-900">
                 25 mins
               </span>
-              <span className="text-xs px-2 py-1 rounded-full bg-gray-200">
+              <span className="text-xs px-2 py-1 rounded-full bg-neutral-200 text-neutral-700">
                 Medium
               </span>
             </div>
-            <h1 className="text-xl font-bold">{data?.strMeal}</h1>
-           <h2 className="flex gap-2 text-sm"><Globe />{data?.strArea}</h2>
+            <h1 className="text-5xl md:text-6xl font-black tracking-tight">{data?.strMeal}</h1>
+           {/* <h2 className="flex gap-2 text-sm"><Globe />{data?.strArea}</h2> */}
             <p className="text-sm text-gray-500 mt-2">
               {data?.strInstructions?.slice(0, 120) + "..."}
             </p>
-            <div className="mt-4 grid grid-cols-3 text-center">
+            <div className="mt-4 flex gap-5 text-center">
               <div>
-                <p className="font-bold text-lg">420</p>
                 <p className="text-xs text-gray-500">Calories</p>
+                <p className="font-bold text-lg">420</p>
               </div>
 
               <div>
-                <p className="font-bold text-lg">36g</p>
                 <p className="text-xs text-gray-500">Protein</p>
+                <p className="font-bold text-lg">36g</p>
               </div>
 
               <div>
-                <p className="font-bold text-lg">12g</p>
                 <p className="text-xs text-gray-500">Carbs</p>
+                <p className="font-bold text-lg">12g</p>
               </div>
             </div>
           </div>
@@ -94,12 +92,12 @@ export default function RecipeDetail() {
       </div>
       <div className="mt-20 grid md:grid-cols-2 gap-10">
         <div>
-          <h2 className="font-semibold mb-4">Ingredients</h2>
+          <h2 className="text-2xl font-bold mb-6">Ingredients</h2>
           <div className="space-y-2">
             {ingredients.map((item, index) => (
               <div
                 key={index}
-                className="bg-gray-100 px-3 py-2 rounded-lg text-sm text-gray-700"
+                className="flex items-center gap-3 bg-white  rounded-xl px-4 py-3 shadow-sm"
               >
                 {item}
               </div>
@@ -116,11 +114,12 @@ export default function RecipeDetail() {
             .map((step, index) => (
               <div key={index} className="mb-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 flex items-center justify-center rounded-full bg-yellow-200 text-xs font-bold">
+                  <div className="w-8 h-8 flex items-center justify-center rounded-full bg-yellow-300 text-xs font-bold">
                     {index + 1}
                   </div>
 
                   <p className="text-sm text-gray-700 leading-relaxed">{step}</p>
+                  
                 </div>
               </div>
             ))}
