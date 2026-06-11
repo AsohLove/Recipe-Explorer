@@ -7,7 +7,7 @@ import TrendingRecipes from "../components/TrendingRecipes";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMealsByCategory } from "../services/api";
 import Loader from "../components/Loader";
-// import { useDebounce } from "use-debounce";
+import { useDebounce } from "use-debounce";
 import { useOutletContext } from "react-router-dom";
 import { generalSearch } from "../utils/generalSearch";
 
@@ -17,21 +17,20 @@ type ContextType = {
 };
 
 export default function Home() {
-  const { search: navbarSearch } = useOutletContext<ContextType>();
+  const { search, setSearch } = useOutletContext<ContextType>();
 
-  const [heroSearch, setHeroSearch] = useState<string>("");
+  // const [heroSearch, setHeroSearch] = useState<string>("");
 
   const [category, setCategory] = useState("All");
 
-  //   const [debounceSearch] = useDebounce(search, 500);
+  const [debounceSearch] = useDebounce(search, 500);
 
-  const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["recipe", heroSearch || navbarSearch, category],
+  const { data, isLoading, isFetching, isError, error } = useQuery({
+    queryKey: ["recipe", debounceSearch, category],
     queryFn: () => {
-      const query = heroSearch || navbarSearch;
-
-      if (query) {
-        return generalSearch(query);
+      console.log("QUERY:", debounceSearch);
+      if (debounceSearch.trim()) {
+        return generalSearch(debounceSearch);
       }
 
       return fetchMealsByCategory(category);
@@ -42,9 +41,20 @@ export default function Home() {
 
   // if (isLoading) return <Loader />;
 
+  if (isError) {
+    return (
+      <div className="text-center py-8 text-red-500">
+        Error: {(error as Error).message}
+      </div>
+    );
+  }
+
+  console.log("Home search:", search);
+  console.log("Debounced search:", debounceSearch);
+
   return (
     <div>
-      <HeroSection setSearch={setHeroSearch} />
+      <HeroSection setSearch={setSearch} />
       <CategoryFilter active={category} setCategory={setCategory} />
       {/* <App /> */}
 

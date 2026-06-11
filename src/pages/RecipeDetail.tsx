@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { fetchMealById } from "../services/api";
 import type { MealTypes } from "../types/MealTypes";
 import Loader from "../components/Loader";
-import { Heart } from "lucide-react";
 
 export default function RecipeDetail() {
   const { id } = useParams();
@@ -40,18 +39,12 @@ export default function RecipeDetail() {
       transition={{ duration: 0.4 }}
       className="max-w-4xl px-4 mt-5 mx-auto"
     >
-      <div className="flex justify-between"> 
       <button
         onClick={() => navigate(-1)}
         className="mb-6 text-sm text-gray-500 cursor-pointer"
       >
         ← Back
       </button>
-
-      <button>
-          <Heart size={18} fill="red"/>
-      </button>
-      </div>
 
       <div className="relative w-full h-[420px] md:h-[500px] rounded-2xl shadow-md">
         <img

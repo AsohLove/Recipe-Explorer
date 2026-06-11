@@ -1,17 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import { ChefHat, CircleUserRound, Heart, Search } from "lucide-react";
-import { useState } from "react";
 
 type Props = {
   search: string;
   setSearch: (search: string) => void;
 };
 
-export default function Navbar({ setSearch }: Props) {
-  const [input, setInput] = useState<string>("");
+export default function Navbar({ search, setSearch }: Props) {
 
   const handleSearch = () => {
-    setSearch(input);
+    setSearch(search);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -57,10 +55,10 @@ export default function Navbar({ setSearch }: Props) {
           <Search size={20} className="text-gray-400" />
           <input
             type="text"
-            value={input}
+            value={search}
             placeholder="Search recipes..."
             className="bg-gray-100 outline-none w-full text-gray-700 placeholder-gray-400"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             onKeyDown={handleKeyDown}
           />
         </div>
