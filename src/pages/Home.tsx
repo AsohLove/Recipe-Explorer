@@ -28,7 +28,6 @@ export default function Home() {
   const { data, isLoading, isFetching, isError, error } = useQuery({
     queryKey: ["recipe", debounceSearch, category],
     queryFn: () => {
-      console.log("QUERY:", debounceSearch);
       if (debounceSearch.trim()) {
         return generalSearch(debounceSearch);
       }
@@ -48,9 +47,6 @@ export default function Home() {
       </div>
     );
   }
-
-  console.log("Home search:", search);
-  console.log("Debounced search:", debounceSearch);
 
   return (
     <div>

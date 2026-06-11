@@ -12,8 +12,7 @@ export default function HeroSection({ setSearch }: Props) {
   const handleSearch = () => {
     if (!input.trim()) return;
     
-    console.log("Hero searching:", input.trim());
-    
+
       setSearch(input.trim());
     
   }
